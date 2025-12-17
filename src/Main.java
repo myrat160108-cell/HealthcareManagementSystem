@@ -7,8 +7,9 @@ public class Main {
         JobListing job2 = new JobListing("Logo Designer",
                 "Need a modern logo for a startup", 150);
 
-        Freelancer freelancer1 = new Freelancer("Alex", "Java, Spring", 25);
+        Freelancer freelancer1 = new Freelancer("Islam", "Java, Spring", 25);
         Freelancer freelancer2 = new Freelancer("Maria", "Photoshop, Illustrator", 18);
+
 
         Portal portal = new Portal("FreelanceHub", 12000);
 
