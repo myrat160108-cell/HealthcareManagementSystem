@@ -1,31 +1,30 @@
+import model.Freelancer;
+import model.JobListing;
+import service.Portal;
+
 public class Main {
     public static void main(String[] args) {
 
+        Portal portal = new Portal();
 
-        JobListing job1 = new JobListing("Web Developer",
-                "Need a website created in Java", 500);
-        JobListing job2 = new JobListing("Logo Designer",
-                "Need a modern logo for a startup", 150);
+        portal.addFreelancer(new Freelancer(1, "Alex", "Java", 3));
+        portal.addFreelancer(new Freelancer(2, "Maria", "Web Design", 5));
 
-        Freelancer freelancer1 = new Freelancer("Alex", "Java, Spring", 25);
-        Freelancer freelancer2 = new Freelancer("Maria", "Photoshop, Illustrator", 18);
+        portal.addJob(new JobListing(1, "Website Development", "IT", 1200));
+        portal.addJob(new JobListing(2, "Logo Design", "Design", 400));
+        portal.addJob(new JobListing(3, "Backend API", "IT", 2000));
 
-        Portal portal = new Portal("FreelanceHub", 12000);
+        System.out.println("=== All Jobs ===");
+        portal.showAllJobs();
 
-        portal.displayPortalInfo();
-        System.out.println("\n--- Job Listings ---");
-        job1.displayInfo();
-        job2.displayInfo();
+        System.out.println("\n=== IT Jobs ===");
+        portal.findJobsByCategory("IT").forEach(System.out::println);
 
-        System.out.println("\n--- Freelancer Profiles ---");
-        freelancer1.showProfile();
-        freelancer2.showProfile();
+        System.out.println("\n=== Jobs with budget >= 1000 ===");
+        portal.filterJobsByBudget(1000).forEach(System.out::println);
 
-        System.out.println("\n--- Comparison ---");
-        if (job1.getBudget() > job2.getBudget()) {
-            System.out.println(job1.getTitle() + " has a higher budget than " + job2.getTitle());
-        } else {
-            System.out.println(job2.getTitle() + " has a higher budget than " + job1.getTitle());
-        }
+        System.out.println("\n=== Sorted by budget ===");
+        portal.sortJobsByBudget();
+        portal.showAllJobs();
     }
 }
