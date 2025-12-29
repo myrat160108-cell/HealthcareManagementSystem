@@ -1,19 +1,31 @@
-import model.Freelancer;
-import model.JobListing;
-import Service.Portal;
-
 public class Main {
     public static void main(String[] args) {
 
-        Portal portal = new Portal();
 
-        portal.addFreelancer(new Freelancer(1, "Alex", "Java", 3));
-        portal.addFreelancer(new Freelancer(2, "Maria", "Design", 5));
+        JobListing job1 = new JobListing("Web Developer",
+                "Need a website created in Java", 500);
+        JobListing job2 = new JobListing("Logo Designer",
+                "Need a modern logo for a startup", 150);
 
-        portal.addJob(new JobListing(1, "Backend API", "IT", 2000));
-        portal.addJob(new JobListing(2, "Logo Design", "Design", 400));
-        portal.addJob(new JobListing(3, "Website Development", "IT", 1200));
+        Freelancer freelancer1 = new Freelancer("Alex", "Java, Spring", 25);
+        Freelancer freelancer2 = new Freelancer("Maria", "Photoshop, Illustrator", 18);
 
-        portal.showAllJobs();
+        Portal portal = new Portal("FreelanceHub", 12000);
+
+        portal.displayPortalInfo();
+        System.out.println("\n--- Job Listings ---");
+        job1.displayInfo();
+        job2.displayInfo();
+
+        System.out.println("\n--- Freelancer Profiles ---");
+        freelancer1.showProfile();
+        freelancer2.showProfile();
+
+        System.out.println("\n--- Comparison ---");
+        if (job1.getBudget() > job2.getBudget()) {
+            System.out.println(job1.getTitle() + " has a higher budget than " + job2.getTitle());
+        } else {
+            System.out.println(job2.getTitle() + " has a higher budget than " + job1.getTitle());
+        }
     }
 }
